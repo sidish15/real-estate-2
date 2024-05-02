@@ -10,7 +10,7 @@ import path from 'path'
 import cors from 'cors'
 dotenv.config();//initilizing dotenv
 
-
+const PORT = process.env.PORT | 8080
 mongoose.connect(process.env.MONGO).then(() => {
         console.log(`Connected to MongoDB`)
 }).catch((err) => {
@@ -22,13 +22,13 @@ const __dirname = path.resolve()
 const app = express();
 //we are not allowed to send any JSON to the server
 //we need to allow the JSON as the input 
-app.use(express.json())
 app.use(cors())
+app.use(express.json())
 
 app.use(cookieParser());//now u can get the inf from the cookie
 
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
         console.log(`Server is running on port 3000`)
 })
 
