@@ -7,6 +7,7 @@ import authRouter from "./routes/auth.route.js"
 import listingRouter from "./routes/listing.route.js"
 import cookieParser from "cookie-parser";
 import path from 'path'
+import cors from 'cors'
 dotenv.config();//initilizing dotenv
 
 
@@ -22,6 +23,7 @@ const app = express();
 //we are not allowed to send any JSON to the server
 //we need to allow the JSON as the input 
 app.use(express.json())
+app.use(cors())
 
 app.use(cookieParser());//now u can get the inf from the cookie
 
