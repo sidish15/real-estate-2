@@ -16,7 +16,7 @@ mongoose.connect(process.env.MONGO).then(() => {
         console.log(err);
 })
 
-const __dirname=path.resolve()
+const __dirname = path.resolve()
 
 const app = express();
 //we are not allowed to send any JSON to the server
@@ -30,16 +30,19 @@ app.listen(3000, () => {
         console.log(`Server is running on port 3000`)
 })
 
+app.get('/', (req, res) => {
+        return res.json({ "msg": "Welcome to real estate!" })
+})
 
 app.use("/api/user", userRouter)
 app.use("/api/auth", authRouter);
 app.use("/api/listing", listingRouter)
 
 
-app.use(express.static(path.join(__dirname,'/client/dist')))
+app.use(express.static(path.join(__dirname, '/client/dist')))
 
-app.get('*',(req,res)=>{
-        res.sendFile(path.join(__dirname,'client','dist','index.html'))
+app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'))
 })
 
 
