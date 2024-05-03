@@ -10,6 +10,7 @@ export const verifyToken=(req,res,next)=>{
                 if(err) return next(errorHandler(403,'Forbidden'))
                 //we want to send the user data to next function i.e updateUser
                 // so we wanna send inside the request
+                console.log(user);
                 req.user=user; //rhs user(=id) is the user that we are getting from the cookie ,save the user to the request
                 next()
          })
